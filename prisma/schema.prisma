@@ -1,0 +1,43 @@
+// Prisma schema — Clínica Dental
+// Documentación: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  // Usada en runtime (serverless / Vercel): conexión con pooling (pgbouncer).
+  url       = env("DATABASE_URL")
+  // Usada solo para migraciones: conexión directa a Postgres.
+  directUrl = env("DIRECT_URL")
+}
+
+enum AppointmentStatus {
+  PENDIENTE
+  CONTACTADO
+  CONFIRMADO
+  CANCELADO
+}
+
+// Solicitud de turno / contacto enviada desde el formulario público.
+// Pensado para poder evolucionar más adelante hacia un calendario real
+// (agregar relaciones a un modelo Professional / Slot sin romper esta tabla).
+model AppointmentRequest {
+  id               String            @id @default(cuid())
+  name             String
+  email            String
+  phone            String
+  treatment        String
+  preferredDate    DateTime?
+  preferredTime    String?
+  message          String?
+  status           AppointmentStatus @default(PENDIENTE)
+  // Campo honeypot: si llega con contenido, se descarta como spam (ver /lib/validations.ts).
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+
+  @@index([status])
+  @@index([createdAt])
+  @@map("appointment_requests")
+}
