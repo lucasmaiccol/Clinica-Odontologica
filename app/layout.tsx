@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Fraunces, Inter } from "next/font/google";
 import "./globals.css";
 import { clinicConfig } from "@/lib/clinicConfig";
+import { siteUrl } from "@/lib/site";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -17,8 +18,6 @@ const inter = Inter({
   weight: ["400", "500", "600", "700"],
   display: "swap",
 });
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
