@@ -6,7 +6,7 @@ A production-grade website template for dental clinics, built as a real
 product rather than a static template: a conversion-focused landing page
 backed by a real database, ready to take appointment requests from day one.
 
-[Live Demo](#) · [Report an issue](#) · [Contact](#contact)
+[Live Demo](#Demo) · [Contact](#contact)
 
 ![Next.js](https://img.shields.io/badge/Next.js-14-000000?logo=next.js&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)
@@ -107,7 +107,7 @@ dashboards. If you're looking for something similar for your business,
 let's talk.
 
 
-## Live Demo
+## Demo
 
 <a href="https://clinica-odontologica-n9lpf19uk-lucasmaiccol-orgs.vercel.app/" target="_blank">
   <strong> Live Demo </strong>
